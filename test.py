@@ -5,7 +5,7 @@ wn.bgcolor('lightblue')
 
 def race(t1,t2):
     for i in range(40):
-        nick.forward(random.randrange(1,10));benson.forward(random.randrange(1,10))
+        t1.forward(random.randrange(1,10));t2.forward(random.randrange(1,10))
 
 
 nick=turtle.Turtle()
