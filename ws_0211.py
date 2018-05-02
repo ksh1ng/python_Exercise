@@ -1,11 +1,13 @@
 '''Every exercise in worksheet'''
 def bluebird_count():
     sum=0
-    num_watchers=int(input("Enter the number of teams:"))
-    for i  in range(num_watchers):
-        print("----Observer {} -----".format(i+1))
-        num_bird=int(input("Enter number spotted by this observer:"))
-        sum=sum+num_bird
+    num_teams=int(input("Enter the number of teams:"))
+    for i  in range(num_teams):
+        num_observers=int(input("Enter the number of observers of team{}:".format(i+1)))
+        for j in range(num_observers):
+            print("----Observer {} -----".format(j+1))
+            num_bird=int(input("Enter number spotted by this observer:"))
+            sum=sum+num_bird
     #print("There were {} Eastern Bluebirds spotted today".format(sum))
     return sum
 
