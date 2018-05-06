@@ -15,8 +15,8 @@ def  is_alive(life_force):
     '''
     if life_force<=0:
         return False
-    else:
-        return True
+
+    return True
 
 def class_standing(num_units):
     '''
@@ -67,10 +67,11 @@ def jailbreak():
         user_number=int(input("Enter a number between 1 and 6: "))
         sim_number=random.randint(1, 6)
         if user_number == sim_number:
-            print("You escaped in _ rolls")
+            print("You escaped in",i + 1,"rolls")
             return
 
-    return None
+
+
 
 
 
@@ -83,9 +84,9 @@ def main():
     Write a description of what happens when you run
     this file here.
     '''
-    jailbreak()
-    # put main code here, make sure each line is indented one level, and delete this comment
 
+    # put main code here, make sure each line is indented one level, and delete this comment
+    jailbreak()
 
 
     #input('Press enter to end.')  # keeps the turtle graphics window open
