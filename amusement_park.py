@@ -50,52 +50,54 @@ def ride_rollercoaster(money):
                 if can_pay(money,3):
                     print("OK! You chose ",ride)
                     money -= 3
-                    print("====Money $"+str(money),"====")
+                    #print("====Money $"+str(money),"====")
 
                     break
 
                 else:
                     print("Sorry! You did not have enough money~")
-                    print("====Money $"+str(money),"====")
+                    #print("====Money $"+str(money),"====")
                     return money
 
             elif ride == '2':
                 if can_pay(money,4):
                     money -= 4
                     print("OK! You chose ",ride)
-                    print("====Money $"+str(money),"====")
+                    #print("====Money $"+str(money),"====")
                     break
 
                 else:
                     print("Sorry! You did not have enough money~")
-                    print("====Money $"+str(money),"====")
+                    #print("====Money $"+str(money),"====")
                     return money
 
             elif ride == '3':
                 if can_pay(money,5):
                     print("OK! You chose ",ride)
                     money -= 5
-                    print("====Money $"+str(money),"====")
+                    #print("====Money $"+str(money),"====")
                     break
 
                 else:
                     print("Sorry! You did not have enough money~")
-                    print("====Money $"+str(money),"====")
+                    #print("====Money $"+str(money),"====")
                     return money
 
             elif ride == '4':
                 if can_pay(money,6):
                     print("OK! You chose ",ride)
                     money -= 6
-                    print("====Money $"+str(money),"====")
+                    #print("====Money $"+str(money),"====")
                     break
 
                 else:
                     print("Sorry! You did not have enough money~")
-                    print("====Money $"+str(money),"====")
+                    #print("====Money $"+str(money),"====")
                     return money
-        play=input("Do you want to continue?(y/n)")
+
+        play=input("Do you want to play other?(y/n)")
     print("Thank you for coming!")
+    return money
 
 
 
@@ -170,9 +172,32 @@ def main():
      create a variable called total_money. This variable will store how much
      money the user has while at the park.
     '''
-    total_money=20
-    total_money=ride_rollercoaster(total_money)
-    print(total_money)
+    money=20
+
+
+    while True:
+        print("\n~~~~Money $" + str(money), "~~~~\n")
+        user_action = input("What would you like to do?\n" +
+                            "\t-buy food\n" +
+                            "\t-ride coaster\n" +
+                            "\t-leave\n")
+        if not (user_action == 'buy food' or user_action == 'ride coaster' or user_action == 'leave'):
+            print("You can't do that here!")
+            continue
+
+        if user_action == 'buy food':
+            money=buy_food(money)
+
+        if user_action == 'ride coaster':
+            money=ride_rollercoaster(money)
+        if user_action == 'leave':
+            print()
+            print("Tks for your coming~")
+            break
+    print("You left with $"+str(money),"!")
+
+
+
 
 
     # put main code here, make sure each line is indented one level, and delete this comment
