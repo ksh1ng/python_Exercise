@@ -59,7 +59,7 @@ def roll_again(name):
     while True:
 
         roll_again_=input("Roll again, {}? (Y/N) ".format(name))
-        if roll_again_ in 'YyNn':
+        if roll_again_ in 'YyNn' and roll_again_ not in '':
             break
         else:
             print("I don't understand:",'"'+roll_again_+'".','Please enter either "Y" or "N".')
@@ -178,21 +178,24 @@ def main():
     player1=input("Enter name for player 1: ")
     player2=input("Enter name for player 2: ")
     print("\tHello {} and {}, welcome to Pig Dice!".format(player1,player2))
+    input()
     score1=0
     score2=0
     print_scores(player1,score1,player2,score2)
     while True:
-        score1=play_turn(player1)
+        score1 += play_turn(player1)
         print_scores(player1,score1,player2,score2)
         if not check_for_winner(player1,score1):
-            score2=play_turn(player2)
-            if check_for_winner(player1,score1):
+            score2 += play_turn(player2)
+            print_scores(player1,score1,player2,score2)
+            if check_for_winner(player2,score2):
                 break
             else:
                 continue
         else:
-            break
 
+
+            break
 
 
     #print(roll_again('nick'))
