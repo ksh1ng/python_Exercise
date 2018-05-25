@@ -1,6 +1,6 @@
 '''
 Author: <ksh1ng>
-Date: <2018.5.21>
+Date: <2018.5.25>
 Class: ISTA 130
 Section Leader: <Johnny Hsu>
 
@@ -9,7 +9,7 @@ Description:
 '''
 import random
 # put all of your import statements below this line and then delete this comment
-def print_scores(player1,score1,player2,score2):
+def print_scores(name1,score1,name2,score2):
     '''
     Four parameters :1.the name of the first player (a string)
                      2. his/her score (an int)
@@ -24,7 +24,7 @@ def print_scores(player1,score1,player2,score2):
               • Every other gap is a single space.
     '''
     print()
-    print("--- SCORES\t"+player1+":",str(score1)+"\t"+player2+":",str(score2),"---")
+    print("--- SCORES\t"+name1+":",str(score1)+"\t"+name2+":",str(score2),"---")
 
 def check_for_winner(name,score):
     '''
@@ -57,16 +57,14 @@ def roll_again(name):
            whether the player wants to roll again.
     '''
     while True:
-
-        roll_again_=input("Roll again, {}? (Y/N) ".format(name))
-        if roll_again_ in 'YyNn' and roll_again_ not in '':
-            break
+        user_input = input("Roll again, " + name + "? (Y/N) ")
+        if user_input in 'Yy':
+            return True
+        elif user_input in 'Nn':
+            return False
         else:
-            print("I don't understand:",'"'+roll_again_+'".','Please enter either "Y" or "N".')
-    if roll_again_ in 'Yy':
-        return True
-    else:
-        return False
+            print("I don't understand: "+'"'+user_input+'".'+' Please enter either "Y" or "N".')
+
 
 def play_turn(name):
     '''
@@ -111,30 +109,31 @@ def play_turn(name):
         d) Make sure that you returned the number of points earned by
            the player for this turn in all cases
     '''
-    print("---------- {}'s turn ----------".format(name))
-    point=0
-    turn_earn=0
+    print("---------- "+name+"'s turn ----------")
+
+    turn_earn = 0
+
     while True:
-        roll_num=random.randint(1,6)
-        print("\t<<< {} rolls a {} >>>".format(name,roll_num))
+        roll_num = random.randint(1,6)
+        print("\t<<< "+name+" rolls a "+str(roll_num)+" >>>")
 
         if roll_num == 1:
-            print("\t!!! PIG! No points earned, sorry {} !!!".format(name))
+            print("\t!!! PIG! No points earned, sorry "+name+" !!!")
             input("(enter to continue)")
-            turn_earn=0
-            return turn_earn
+            return 0
         else:
             turn_earn += roll_num
-            print("\tPoints:",turn_earn)
+            print("\tPoints: "+str(turn_earn))
 
-            if roll_again(name):
+            if  roll_again(name):
                 continue
             else:
                 return turn_earn
 
 
 
-        #_continue_=input("(enter to continue)")
+
+
 
 
 
@@ -171,30 +170,26 @@ def main():
            Check whether player 2 won the game.
         • If either player won the game, ensure that you exit the while loop.
     '''
-    seed_value=input("Enter seed value:")
+    seed_value=int(input("Enter seed value: "))
     random.seed(seed_value)
-    print()
-    print("\nPig Dice")
+    #print()
+    print("\n\nPig Dice")
     player1=input("Enter name for player 1: ")
     player2=input("Enter name for player 2: ")
-    print("\tHello {} and {}, welcome to Pig Dice!".format(player1,player2))
-    input()
-    score1=0
-    score2=0
+    print("\tHello "+player1+" and "+player2+", welcome to Pig Dice!")
+    #input()
+    score1 = 0
+    score2 = 0
     print_scores(player1,score1,player2,score2)
     while True:
         score1 += play_turn(player1)
         print_scores(player1,score1,player2,score2)
-        if not check_for_winner(player1,score1):
-            score2 += play_turn(player2)
-            print_scores(player1,score1,player2,score2)
-            if check_for_winner(player2,score2):
-                break
-            else:
-                continue
-        else:
+        if check_for_winner(player1,score1):
+            break
 
-
+        score2 += play_turn(player2)
+        print_scores(player1,score1,player2,score2)
+        if check_for_winner(player2,score2):
             break
 
 
