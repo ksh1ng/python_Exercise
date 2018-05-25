@@ -9,7 +9,7 @@ Description:
 '''
 import random
 # put all of your import statements below this line and then delete this comment
-def print_scores(name1,score1,name2,score2):
+def print_scores(name1 , score1 , name2 , score2):
     '''
     Four parameters :1.the name of the first player (a string)
                      2. his/her score (an int)
@@ -26,7 +26,7 @@ def print_scores(name1,score1,name2,score2):
     print()
     print("--- SCORES\t"+name1+":",str(score1)+"\t"+name2+":",str(score2),"---")
 
-def check_for_winner(name,score):
+def check_for_winner(name , score):
     '''
     Two parameters: a name (a string) and a score (an int)
 
@@ -39,6 +39,7 @@ def check_for_winner(name,score):
     if score >= 50:
         print("THE WINNER IS:",name+"!!!!!")
         return True
+
     return False
 
 def roll_again(name):
@@ -131,14 +132,6 @@ def play_turn(name):
                 return turn_earn
 
 
-
-
-
-
-
-
-
-
 # put all of your function definitions below this line and then delete this comment
 
 
@@ -180,16 +173,16 @@ def main():
     #input()
     score1 = 0
     score2 = 0
-    print_scores(player1,score1,player2,score2)
+    print_scores(player1 , score1 , player2 , score2)
     while True:
         score1 += play_turn(player1)
-        print_scores(player1,score1,player2,score2)
-        if check_for_winner(player1,score1):
+        print_scores(player1 , score1 , player2 , score2)
+        if check_for_winner(player1 , score1):
             break
 
         score2 += play_turn(player2)
-        print_scores(player1,score1,player2,score2)
-        if check_for_winner(player2,score2):
+        print_scores(player1 , score1 , player2 , score2)
+        if check_for_winner(player2 , score2):
             break
 
 
