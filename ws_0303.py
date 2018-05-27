@@ -48,10 +48,12 @@ def thirds(str):
     if len(str) >= 3:
         i = 2
         new_str = ''
+
         while i < len(str):
             new_str += str[i]
             i += 3
         return new_str
+
     return None
 
 def count(str,char):
@@ -69,8 +71,11 @@ def count(str,char):
      string
     '''
     num_char = 0
+
     if str != '':
+
         for i in range(len(str)):
+
             if str[i] == char:
                 num_char += 1
         return num_char
