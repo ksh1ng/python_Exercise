@@ -1,13 +1,13 @@
 '''
 Author: <ksh1ng>
-Date: <2018.5.16>
+Date: <2018.6.1>
 Class: ISTA 130
 Section Leader: <Johnny Hsu>
 
 Description:
-<LAB05>
+<LAB06>
 '''
-
+import random
 # put all of your import statements below this line and then delete this comment
 
 # put all of your function definitions below this line and then delete this comment
@@ -163,6 +163,60 @@ def buy_food(money):
             print("Sorry, that's not on the menu")
             print("----------------")
 
+def guessing_game(money):
+    '''
+    Description:
+     1.It costs 2 dollars to play the game.
+       Check if the user has enough money to play
+     2.It generates a random number between 0 and 100
+       and lets the user take a guess.
+     3.If the number is correct exit the while loop
+       and print a victory message.
+     4.While the guess is not correct print out whether
+       the number is higher or lower than the random number
+       and ask the user to enter another guess.
+
+    Parameters:
+     money:  how much money a person has.
+
+    Return:
+     If it is under 5 tries return their money plus 20 dollars
+     for winning otherwise return their money minus 2.
+
+    '''
+    if not can_pay(money,2):
+        print("Sorry! You don't have enough money")
+
+
+    random_number = random.randint(0,100)
+    times_guess = 1
+
+    user_guess = int(input("Please guess a number between 0 and 100! "))
+    while can_pay(money,2):
+
+        if user_guess == random_number:
+            print("That's it!")
+            break
+        elif user_guess > random_number:
+            print("Too High!")
+            times_guess += 1
+        else:
+            print("Too Low!")
+            times_guess += 1
+
+        print()
+        user_guess = int(input("Please guess another number between 0 and 100 again! "))
+    if times_guess < 5:
+        print("You guessed correctly in under 5 tries! You win 5 dollars!")
+        return money + 5
+    else:
+        print("You guessed correctly in more than 5 tries! You lose 2 dollars!")
+        return money - 2
+
+
+
+
+
 
 
 
@@ -172,29 +226,37 @@ def main():
      create a variable called total_money. This variable will store how much
      money the user has while at the park.
     '''
-    money=20
+    total_money=20
 
 
     while True:
-        print("\n~~~~Money $" + str(money), "~~~~\n")
+        print("\n~~~~Money $" + str(total_money), "~~~~\n")
         user_action = input("What would you like to do?\n" +
                             "\t-buy food\n" +
                             "\t-ride coaster\n" +
+                            "\t-guessing game\n"
                             "\t-leave\n")
-        if not (user_action == 'buy food' or user_action == 'ride coaster' or user_action == 'leave'):
+        if not (user_action == 'buy food' or user_action == 'ride coaster' or user_action == 'guessing game' or user_action == 'leave'):
             print("You can't do that here!")
             continue
 
         if user_action == 'buy food':
-            money=buy_food(money)
+            total_money = buy_food(total_money)
 
         if user_action == 'ride coaster':
-            money=ride_rollercoaster(money)
+            total_money = ride_rollercoaster(total_money)
+
+        if user_action == 'guessing game':
+            total_money = guessing_game(total_money)
+
         if user_action == 'leave':
             print()
             print("Tks for your coming~")
             break
-    print("You left with $"+str(money),"!")
+
+
+
+    print("You left with $"+str(total_money),"!")
 
 
 
