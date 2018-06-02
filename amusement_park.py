@@ -5,7 +5,7 @@ Class: ISTA 130
 Section Leader: <Johnny Hsu>
 
 Description:
-<LAB06>
+<LAB05,06>
 '''
 import random
 # put all of your import statements below this line and then delete this comment
