@@ -3,7 +3,6 @@ Author: <ksh1ng>
 Date: <2018.6.5>
 Class: ISTA 130
 Section Leader: <Johnny Hsu>
-
 Description:
 <WS0324>
 '''
@@ -18,10 +17,8 @@ def last_3(str):
     Description:
       Takes one string argument and returns a new string
       containing the argument's last 3 characters
-
     Parameters:
      str: a string argument
-
     Return:
       a new string containing the argument's last 3 characters.
       If the argument doesn't have 3 characters, return it
@@ -39,10 +36,8 @@ def alphabetize(str1, str2):
      Takes two string arguments and prints them in
      alphabetical order on one line separated by ' <= '
      (Consider upper and lower case of the same letter as the same)
-
     Parameters:
      str1, str2: string arguments
-
     Return: None
     '''
     upper_str1 = str1.upper()
@@ -57,10 +52,8 @@ def dashes1(str):
     '''
     Description:
       EX: dashes('dog') returns 'd-o-g'
-
     Parameters:
      str: string argument
-
     Return:
       a new string that has the characters of the argument
       separated by dashes.
@@ -86,7 +79,6 @@ def full_name(str):
       Examples:
         full_name("fudd, elmer") -> "Elmer Fudd"
         full_name("DUCK, donald") -> "Donald Duck"
-
     Parameters:
      str:  string argument has format "last, first"
            (letters may be upper or lowercase)
@@ -103,10 +95,8 @@ def verify_float(str):
      Takes a string and returns True if the string can
      safely be passed to the float typecasting function,
      False otherwise
-
     Parameters:
      str: a string.
-
     Return: bool
     '''
     position_decimal_point = str.find('.')
