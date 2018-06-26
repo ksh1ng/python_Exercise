@@ -23,7 +23,7 @@ def print_report(filename):
          e.) the total number of characters in the file
          f.) the percent of the file composed of vowels, consonants, white spaces,
              and punctuation characters
-      #??g.) begin and end with a blank line.
+         g.) begin and end with a blank line.
     Parameters:
      filename: a single string parameter.
 
@@ -53,24 +53,26 @@ def print_report(filename):
     p_punctuation = round(count_punctuation / num_characters *100, 1)
 
     title =  filename.center(25, '-')
-    print(title)
+    print('\n' + title)
 
     items_dict1 = {'Vowels:' : count_vowels, 'Consonants:' : count_consonants, 'Whitespace:':count_white_spaces, 'Punctuation:' : count_punctuation}
 
-    items_dict2 = {'Total:' : num_characters, 'Percent vowels:' : p_vowels, 'Percent consonants:' : p_consonants,
+    items_dict2 = {'Percent vowels:' : p_vowels, 'Percent consonants:' : p_consonants,
                    'Percent spaces:': p_spaces, 'Percent punctuation:' : p_punctuation}
 
     for (item1, value1) in items_dict1.items():
         print(item1.ljust(20) + str(value1).rjust(5))
 
     print('-' * len(title))
+    print('Total:'.ljust(20) + str(num_characters).rjust(5) + '\n')
 
     for (item2, value2) in items_dict2.items():
         print(item2.ljust(20) + str(value2).rjust(5))
 
-    print('=' * len(title))
+    print('=' * len(title) + '\n')
 
-def replace_parts_of_speech(changed_str, toreplace_str):
+
+def replace_parts_of_speech(replaced, part_of_speech):
     '''
     Description:
      i.) For each occurrence of the given part of speech in the given
@@ -93,17 +95,14 @@ def replace_parts_of_speech(changed_str, toreplace_str):
 
     Return: a new string such as example above.
     '''
+    new_str = replaced
 
-    count_label = 0
+    for i in range(replaced.count(part_of_speech)):
+        new = input('Enter ' + part_of_speech.lower() + ': ')
+        new_str = new_str.replace(part_of_speech, new, 1)
 
-    if toreplace_str in changed_str:
-        changed_list = changed_str.split(toreplace_str)
-        user_enter = input('Enter ' + toreplace_str.lower() + ': ')
-        result = user_enter.join(changed_list)
 
-        return result
-
-    return changed_str
+    return new_str
 
 
 
@@ -159,11 +158,13 @@ def main():
     ii.) Call your function to print the character report on that file
     ii.) Call your function to have the user complete the Mad Lib story
     '''
-    user_file = input('Enter the name of a Mad-Lib template file: ')
+
+    user_file = input('Enter file name: ')
 
     print_report(user_file)
 
     complete_mad_lib(user_file)
+
 
 
     # put main code here, make sure each line is indented one level, and delete this comment
