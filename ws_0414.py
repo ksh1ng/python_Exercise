@@ -42,7 +42,7 @@ class SocialPerson:
         This method pops the name of sp from self.friends.
             sp: (class) another instance of SocialPerson
         '''
-        if sp.my_name in self.friends:
+        if sp.my_name in self.friends:  #prevent the raise of key error
             self.friends.pop(sp.my_name)
 
 
@@ -66,7 +66,7 @@ def main():
     nick.add_friend('ben' , 7)
     print(nick.friends)
 
-    ks = SocialPerson('ks', {'sk': 1, 'jason': 2})
+    ks = SocialPerson('ks1', {'sk': 1, 'jason': 2})
     nick.unfriend(ks)
     print(nick.friends)
 
