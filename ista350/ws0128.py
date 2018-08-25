@@ -86,10 +86,7 @@ def final_grades(grade_book):
 
     return ndict
 
-grades = grade_book('test.txt')
-print(grades)
 
-print(final_grades(grades))
 
 def grade_distribution(final_grades):
     '''
@@ -97,21 +94,29 @@ def grade_distribution(final_grades):
     keys 'A', 'B', 'C', 'D', 'E' to the number of each in the class based on
     the traditional 90-80-70-60 cutoffs.
     '''
-    ndict = {}
+    ndict = {'A': 0, 'B': 0, 'C': 0, 'D': 0, 'E': 0}
     for key in final_grades:
         fgrade = final_grades[key]
 
         if fgrade >= 90:
-            ndict[key] = 'A'
+            ndict['A'] += 1
         elif fgrade >= 80:
-            ndict[key] = 'B'
+            ndict['B'] += 1
         elif fgrade >= 70:
-            ndict[key] = 'C'
+            ndict['C'] += 1
         elif fgrade >= 60:
-            ndict[key] = 'D'
+            ndict['D'] += 1
         else:
-            ndict[key] = 'E'
+            ndict['E'] += 1
     return ndict
+
+grades = grade_book('test.txt')
+print(grades)
+
+finals = final_grades(grades)
+print(finals)
+print(grade_distribution(finals))
+
 
 def class_median(final_grades):
     '''
@@ -125,10 +130,6 @@ def class_median(final_grades):
     else:
         return (grades[len(grades) // 2 - 1] + grades[len(grades) // 2 ]) / 2
 
-grades = grade_book('test.txt')
-print(final_grades(grades))
-
-print(class_median(final_grades(grades)))
 
 
 
@@ -163,6 +164,14 @@ def main():
     print(grades)
 
     print(final_grades(grades))
+
+
+
+    grades = grade_book('test.txt')
+    print(final_grades(grades))
+
+    print(class_median(final_grades(grades)))
+
 
     '''
 
